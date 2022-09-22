@@ -20,7 +20,7 @@ import DataTable from "./components/data-table.vue";
 .container{
   /*height: 100vh;*/
   padding-top: 1px;
-  padding-bottom: 30%;
+  padding-bottom: 50vh;
 
 }
 

@@ -27,17 +27,20 @@ const onSubmit = () => {
     store.getHarmonicNumbers(rows.value, columns.value - 1);
   }
 }
-defineProps({
-  msg: String
-})
 
-const count = ref(0)
+const onReset = () => {
+  rows.value = null;
+  columns.value = null;
+  rowsRef.value.resetValidation();
+  columnsRef.value.resetValidation();
+  store.resetHarmonicNumbers();
+}
 </script>
 
 <template>
   <div class="text-center q-mx-auto q-pa-md" style="max-width: 300px">
     <p class="q-py-sm">select number of rows and column</p>
-    <form @submit.prevent.stop="onSubmit" class="q-gutter-md">
+    <form @submit.prevent.stop="onSubmit" @reset.prevent.stop="onReset" class="q-gutter-md">
     <q-input
         ref="rowsRef"
         filled
@@ -58,6 +61,7 @@ const count = ref(0)
     />
     <div>
       <q-btn label="Submit" type="submit" color="primary" />
+      <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
     </div>
   </form>
   </div>
